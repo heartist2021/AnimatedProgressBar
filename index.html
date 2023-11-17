@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Progress Bar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #progress-container {
+      width: 300px;
+      background-color: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      width: 0;
+      height: 30px;
+      background-color: #4CAF50;
+      transition: width 1s ease-in-out;
+    }
+
+    #percent {
+      text-align: center;
+      color: #333;
+      font-size: 18px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-container">
+  <div id="progress-bar"></div>
+</div>
+<div id="percent">0%</div>
+
+<script>
+  let percent = 0;
+  const progressBar = document.getElementById('progress-bar');
+  const percentText = document.getElementById('percent');
+
+  function updateProgress() {
+    if (percent <= 100) {
+      progressBar.style.width = percent + '%';
+      percentText.textContent = percent + '%';
+      percent++;
+    }
+  }
+
+  setInterval(updateProgress, 50);
+</script>
+
+</body>
+</html>
